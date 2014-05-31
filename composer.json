@@ -1,0 +1,14 @@
+{
+    "name": "jared/chat",
+    "description": "A Land Before Usernames",
+    "require": {
+        "slim/slim": "2.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jared De Blander",
+            "email": "jared@deblander.org"
+        }
+    ]
+}
