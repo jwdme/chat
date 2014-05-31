@@ -33,6 +33,6 @@ $app->get('/:' , function ($name) {
 $app->post('/create' , function () {
     echo '<pre>';
     var_dump($_POST);
-})
+});
 $app->run();
 
