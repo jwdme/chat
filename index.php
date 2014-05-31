@@ -54,7 +54,7 @@ function create_room () {
             # No password sent to a room
             header('Location: /' . $room);
         } else {
-            header('Location: /' . sha1($room . $pass);
+            header('Location: /' . sha1($room . $pass));
         }
     }
     echo '<pre>';
