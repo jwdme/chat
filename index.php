@@ -60,6 +60,6 @@ Routes
 
 $app->get('/',              'view_landing');
 $app->get('/about',         'view_about');
-$app->get('/:',             'view_chatroom');
+$app->get('/:name',         'view_chatroom');
 $app->post('/create',       'create_room');
 $app->run();
