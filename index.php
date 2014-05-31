@@ -44,7 +44,7 @@ function join_random () {
 
 function create_room () {
     trim_post_data();
-    if(!i sset($_POST['room']) || ! isset($_POST['password'])) {
+    if(! isset($_POST['room']) || ! isset($_POST['password'])) {
         die('please complte the form!')
 
     } else {
@@ -57,8 +57,6 @@ function create_room () {
             header('Location: /' . sha1($room . $pass));
         }
     }
-    echo '<pre>';
-    var_dump($_POST);
 }
 /*
 
@@ -79,6 +77,7 @@ function random_string ($length = 10) {
     }
     return $str_out;
 }
+
 function twig_render($template, $vars) {
     global $twig;
     echo $twig->render($template, $vars);
