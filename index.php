@@ -38,15 +38,16 @@ function view_chatroom ($name) {
 }
 
 function join_random () {
-
     header('Location: /' . random_string(12));
 }
 
 function create_room () {
     trim_post_data();
-    if(! isset($_POST['room']) || ! isset($_POST['password'])) {
-        die('please complte the form!')
-
+    if(
+        (!isset($_POST['room']))        ||
+        (!isset($_POST['password']))
+    ) {
+        die('please complete the form!')
     } else {
         $pass = $_POST['password'];
         $room = $_POST['room'];
