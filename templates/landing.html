@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Chat.JWD.me :: The Land Before Usernames{% endblock %}
+{% block body %}
+<form method="post" action="/create">
+<input type="text" name="room" value="" placeholder="Your Room">
+<input type="password" name="password" value="" placeholder="Optional: Password">
+</form>
+{% endblock %}

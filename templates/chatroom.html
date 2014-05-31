@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{{roomname}} :: Chat.JWD.me{% endblock %}
+{% block body %}
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>You</h2>
+                <video height="300" id="localVideo"></video>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Everyone Else</h2>
+                <div id="remotesVideos"></div>
+            </div>
+        </div>
+{% endblock %}
+{% block javascript %}
+    <script src="http://simplewebrtc.com/latest.js"></script>
+    <script>
+var webrtc = new SimpleWebRTC({
+    // the id/element dom element that will hold "our" video
+    localVideoEl: 'localVideo',
+    // the id/element dom element that will hold remote videos
+    remoteVideosEl: 'remotesVideos',
+    // immediately ask for camera access
+    autoRequestMedia: true
+});
+
+// we have to wait until it's ready
+webrtc.on('readyToCall', function () {
+  // you can name it anything
+  webrtc.joinRoom('{{ roomname }}');
+});
+    </script>
+{% endblock %}
