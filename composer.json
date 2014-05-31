@@ -1,8 +1,9 @@
 {
     "name": "jared/chat",
-    "description": "A Land Before Usernames",
     "require": {
-        "slim/slim": "2.*"
+        "slim/slim": "2.*",
+        "phpunit/phpunit": "4.1.1",
+        "twig/twig": "v1.15.1"
     },
     "license": "MIT",
     "authors": [
