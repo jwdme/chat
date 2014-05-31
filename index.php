@@ -2,8 +2,10 @@
 
 require "vendor/autoload.php";
 
-define('TWIG_TEMPLATE_PATH',        'templates/');
+define('TWIG_TEMPLATE_PATH',        __DIR__ . '/templates');
 define('TWIG_TEMPLATE_CACHE_PATH',  false);
+
+$app = new \Slim\Slim();
 
 $loader = new Twig_Loader_Filesystem(TWIG_TEMPLATE_PATH);
 $twig = new Twig_Environment(
@@ -17,18 +19,16 @@ $twig = new Twig_Environment(
     )
 );
 
-$app = new \Slim\Slim();
-
 
 $app->get('/', function () {
-    echo $twig->render('templates/landing.html', array());
+    echo $twig->render('landing.html', array());
 });
 $app->get('/about' ,function () {
     echo "<pre>Written by Jared De Blander\n\n";
     passthru('git branch -v');
 });
 $app->get('/:' , function ($name) {
-    echo $twig->render('templates/chatroom.html', array(
+    echo $twig->render('chatroom.html', array(
         'roomname' => $name
     ));
 });
