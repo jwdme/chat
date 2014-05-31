@@ -21,14 +21,16 @@ $app = new \Slim\Slim();
 
 
 $app->get('/', function () {
-    require 'templates/base.html';
+    echo $twig->render('templates/landing.html');
 });
 $app->get('/about' ,function () {
     echo "<pre>Written by Jared De Blander\n\n";
     passthru('git branch -v');
 });
 $app->get('/:' , function ($name) {
-    echo $twig->render($template, (''));
+    echo $twig->render('templates/chatroom.html', (
+        'roomname' => $name
+    ));
 });
 $app->post('/create' , function () {
     echo '<pre>';
