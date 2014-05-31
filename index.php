@@ -47,7 +47,7 @@ function create_room () {
         (!isset($_POST['room']))        ||
         (!isset($_POST['password']))
     ) {
-        die('please complete the form!')
+        die('please complete the form!');
     } else {
         $pass = $_POST['password'];
         $room = $_POST['room'];
