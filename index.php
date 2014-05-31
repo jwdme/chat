@@ -19,22 +19,47 @@ $twig = new Twig_Environment(
     )
 );
 
+/*
 
-$app->get('/', function () {
-    echo $twig->render('landing.html', array());
-});
-$app->get('/about' ,function () {
-    echo "<pre>Written by Jared De Blander\n\n";
-    passthru('git branch -v');
-});
-$app->get('/:' , function ($name) {
-    echo $twig->render('chatroom.html', array(
-        'roomname' => $name
-    ));
-});
-$app->post('/create' , function () {
+Callback functions
+
+*/
+
+function view_landing () {
+    twig_render('landing.html' , array());
+}
+
+function view_about () {
+    echo 'Written by Jared De Blander';
+}
+
+function view_chatroom ($name) {
+    twig_render('chatroom.html' , array('roomname' => $name));
+}
+
+function create_room () {
     echo '<pre>';
     var_dump($_POST);
-});
-$app->run();
+}
+/*
 
+Support functions
+
+*/
+
+function twig_render($template, $vars) {
+    global $twig;
+    echo $twig->render($template, $vars);
+}
+
+/*
+
+Routes
+
+*/
+
+$app->get('/',              'view_landing');
+$app->get('/about',         'view_about');
+$app->get('/:',             'view_chatroom');
+$app->post('/create',       'create_room');
+$app->run();
